@@ -1,24 +1,56 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type   | Options                  |
+| ------------------ | ------ | ------------------------ |
+| nickname           | string | null:false               |
+| email              | string | null:false, unique: true |
+| encrypted_password | string | null:false               |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :combos
+- has_many :favorites
+- has_many :comments
 
-* Configuration
+## combos テーブル
 
-* Database creation
+| Column        | Type       | Options                       |
+| ------------- | ---------- | ----------------------------- |
+| start_percent | string     | null:false                    |
+| combo_route   | string     | null:false, unique: true      |
+| memo          | text       |                               |
+| rate          | float      |                               |
+| user          | references | null:false, foreign_key: true |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- has_many :favorites
+- has_many :comments
+- belongs_to :user
+- belongs_to :fighter
 
-* Services (job queues, cache servers, search engines, etc.)
+## comments テーブル
 
-* Deployment instructions
+| Column       | Type       | Options                       |
+| ------------ | ---------- | ----------------------------- |
+| comment_text | string     | null:false                    |
+| combo        | references | null:false, foreign_key: true |
+| user         | references | null:false, foreign_key: true |
 
-* ...
+### Association
+
+- belongs_to :user
+- belongs_to :combo
+
+## fighters テーブル
+
+| Column | Type       | Options                       |
+| ------ | ---------- | ----------------------------- |
+| name   | string     | null:false                    |
+| combo  | references | null:false, foreign_key: true |
+
+### Association
+
+- has_many : combos
