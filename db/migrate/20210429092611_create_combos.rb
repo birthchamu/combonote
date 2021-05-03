@@ -3,6 +3,7 @@ class CreateCombos < ActiveRecord::Migration[6.0]
     create_table :combos do |t|
       t.string     :start_percent, null:false
       t.string     :combo_route,   null:false
+      t.text       :memo
       t.references :user,          null:false
       t.integer    :fighter_id,    null:false
       t.timestamps
