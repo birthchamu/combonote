@@ -2,6 +2,7 @@ class CombosController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :upadate, :destroy]
 
   def index
+    @combos = Combo.all
   end
 
   def new
@@ -19,7 +20,7 @@ class CombosController < ApplicationController
 
   private
   def combos_params
-    params.require(:combo).permit(:start_percent, :combo_route, :fighter_id).merge(user_id: current_user.id)
+    params.require(:combo).permit(:start_percent, :combo_route, :memo, :fighter_id).merge(user_id: current_user.id)
   end
 
 

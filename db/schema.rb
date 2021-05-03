@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2021_04_29_092611) do
   create_table "combos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "start_percent", null: false
     t.string "combo_route", null: false
+    t.text "memo"
     t.bigint "user_id", null: false
     t.integer "fighter_id", null: false
     t.datetime "created_at", precision: 6, null: false
