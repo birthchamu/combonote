@@ -23,13 +23,14 @@
 | memo          | text       |                               |
 | rate          | float      |                               |
 | user          | references | null:false, foreign_key: true |
+| fighter       | references | null:false, foreign_key: true |
+
 
 ### Association
 
 - has_many :favorites
 - has_many :comments
 - belongs_to :user
-- belongs_to :fighter
 
 ## comments テーブル
 
@@ -44,13 +45,4 @@
 - belongs_to :user
 - belongs_to :combo
 
-## fighters テーブル
 
-| Column | Type       | Options                       |
-| ------ | ---------- | ----------------------------- |
-| name   | string     | null:false                    |
-| combo  | references | null:false, foreign_key: true |
-
-### Association
-
-- has_many : combos
