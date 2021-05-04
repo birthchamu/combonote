@@ -1,0 +1,9 @@
+<div class='combos-form'>
+  <%= form_with(model: @combo, url: combo_path(@combo.id), local: true, method: :patch) do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
+    <%= f.text_area :start_percent, placeholder: "始動％" %>
+    <%= f.text_area :combo_route, placeholder: "コンボルート" %>
+    <%= f.text_area :memo, placeholder: "メモ" %>
+    <%= f.collection_select(:fighter_id, Fighter.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
+    <%= f.submit "SEND" %>
+  <% end %>

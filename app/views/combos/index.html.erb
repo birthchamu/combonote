@@ -1,12 +1,14 @@
 <ul class='combo-lists'>
   <% @combos.each do |combo|%>
     <li class='list'>
-      <h3 class=combo-start-percent>
-        <%= combo.start_percent %>
-        <%= combo.combo_route %>
-        <%= combo.memo %>
-        <%= combo.fighter.name %>
-      </h3>
+      <%= link_to combo_path(combo.id) do %>
+        <h3 class=combo-start-percent>
+          <%= combo.start_percent %>
+          <%= combo.combo_route %>
+          <%= combo.memo %>
+          <%= combo.fighter.name %>
+        </h3>
+      <% end %>
     </li>
   <% end %>
 </ul>

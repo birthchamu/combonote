@@ -1,0 +1,22 @@
+<% if user_signed_in? && current_user.id == @combo.user_id %>  
+  <div class="more">
+    <ul class="more_list">
+      <li>
+        <%= link_to '編集', edit_combo_path(@combo.id) %>
+      </li>
+    </ul>
+  </div>
+<% end %>
+<ul class='combo-lists'>
+  <li class='list'>
+    <%= link_to edit_combo_path(@combo.id) do %>
+      <h3 class=combo-start-percent>
+        <%= @combo.start_percent %>
+        <%= @combo.combo_route %>
+        <%= @combo.memo %>
+        <%= @combo.fighter.name %>
+      </h3>
+    <% end %>
+  </li>
+</ul>
+
