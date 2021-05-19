@@ -1,6 +1,7 @@
 class CombosController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :upadate, :destroy]
-  before_action :find_combo, only: [:edit, :update, :show]
+  before_action :find_combo, only: [:edit, :update, :show, :destroy]
+  before_action :move_to_index, only: [:edit, :update, :destroy]
   def index
     @combos = Combo.all
   end
@@ -32,6 +33,11 @@ class CombosController < ApplicationController
   def show
   end
 
+  def destroy
+    @combo.destroy
+    redirect_to root_path
+  end
+
   private
   def combos_params
     params.require(:combo).permit(:start_percent, :combo_route, :memo, :fighter_id).merge(user_id: current_user.id)
@@ -39,6 +45,10 @@ class CombosController < ApplicationController
 
   def find_combo
     @combo = Combo.find(params[:id])
+  end
+
+  def move_to_index
+    redirect_to action: :index if @combo.user.id != current_user.id 
   end
 
 end
