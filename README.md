@@ -61,10 +61,5 @@ ComboNote
 - belongs_to :user
 - belongs_to :combo
 
-## favorites テーブル
-
-| Column       | Type       | Options                       |
-| ------------ | ---------- | ----------------------------- |
-| comment_text | string     | null:false                    |
 
 
