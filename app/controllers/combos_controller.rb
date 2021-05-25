@@ -31,6 +31,8 @@ class CombosController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @combo.comments.includes(:user)
   end
 
   def destroy
