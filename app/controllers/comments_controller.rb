@@ -1,6 +1,13 @@
 class CommentsController < ApplicationController
   def create
-    comment = Comment.create(comment_params)
+    @comment = @combo.comments.build(comment_params)
+    @comment.user_id = current_user.id
+    redirect_to combo_path(comment.combo)
+  end
+
+  def destroy
+    @combo = Combo.find(params[:id])
+    @comment = Comment.find_by(id: params[:id],combo_id: params[:combo_id]).destroy
     redirect_to combo_path(comment.combo)
   end
 
