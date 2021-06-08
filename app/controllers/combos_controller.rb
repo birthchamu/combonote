@@ -1,5 +1,5 @@
 class CombosController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :upadate, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :upadate, :show, :destroy]
   before_action :find_combo, only: [:edit, :update, :show, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
   def index
@@ -31,7 +31,7 @@ class CombosController < ApplicationController
   end
 
   def show
-    @comment = Comment.new
+    @comment = @combo.comments.build
     @comments = @combo.comments.includes(:user)
   end
 
