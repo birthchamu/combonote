@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :combos
-  has_many :favorites
+  has_many :favorites, dependent: :destroy 
   has_many :comments
   
   validates :nickname, presence: true
