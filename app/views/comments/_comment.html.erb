@@ -15,8 +15,9 @@
           <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
           <%= comment.text %>
         </p>
-        <%= binding.pry %>
-      <%=link_to "削除", comment_path(@comment.id), method: :delete %>
+        <% if current_user.id == comment.user_id %>
+          <%= link_to "削除", comment_path(comment.id), method: :delete %>
+        <% end %>
       <% end %>
     </div>
   </div>

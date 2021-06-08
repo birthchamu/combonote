@@ -1,5 +1,5 @@
 class CombosController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :upadate, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :upadate, :show, :destroy]
   before_action :find_combo, only: [:edit, :update, :show, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
   def index
