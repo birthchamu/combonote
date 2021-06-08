@@ -6,8 +6,14 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
+  resources :combos, expect: [:index] do
+    resource :favorites, only: [:create, :destroy]
+  end
+
   resources :comments, only: :destroy
   
-  resources :users, only: :show
+  resources :users, only: [:show, :edit, :update] do
+    get :favorites, on: :collection
+  end
   
 end
