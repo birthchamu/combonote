@@ -1,5 +1,5 @@
-<% if user_signed_in?  %>
-   <div class="option" >
+<% if user_signed_in? %>
+  <div class="option" >
      <div class="favorite-btn">
        <p><span>お気に入り登録: </span><%=link_to @combo.favorites.count, combo_favorites_path(@combo.id), method: :post %></p>
      </div>
@@ -9,7 +9,7 @@
      <div class="count-btn">
        <p><span>お気に入りされた数: </span><%= @combo.favorites.count %></p>
      </div>
-     <% else %>
+  </div>
+<% else %>
        <p>※※※お気に入りをするにはユーザー登録をしましょう※※※</p>
-     <% end %>
-   </div>
+<% end %>
